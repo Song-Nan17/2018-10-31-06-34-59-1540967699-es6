@@ -1,11 +1,7 @@
 'use strict';
 
-function double_to_one(collection) {
-  return collection.reduce(toConcatArr, []);
-}
-
-function toConcatArr(accumulator, currentValue) {
-  return accumulator.concat(currentValue);
+let double_to_one=collection=> {
+  return collection.reduce((accumulator, current)=>accumulator.concat(current), []);
 }
 
 module.exports = double_to_one;
