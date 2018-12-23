@@ -1,28 +1,17 @@
 'use strict';
 
-function compute_chain_median(collection) {
+let compute_chain_median = collection => {
   let chainArr = collection.split("->");
   let chainNumArr = chainArr.map(Number);
   return compute_median(chainNumArr);
 }
 
-function compute_median(collection) {
-  let rankAscArr = collection.sort(rankAsc);
-  return calculateMedian(rankAscArr);
-}
-
-function calculateMedian(collection) {
-  let median, length = collection.length;
-  if (length % 2 == 0) {
-    median = (collection[length / 2] + collection[length / 2 - 1]) / 2;
-  } else {
-    median = collection[(length - 1) / 2];
-  }
-  return median;
-}
-
-function rankAsc(a, b) {
-  return a - b;
+let compute_median = collection => {
+  let rank_asc_arr = collection.sort((a, b) => a - b);
+  let median_left_sub = Math.floor((rank_asc_arr.length - 1) / 2);
+  let median_right_sub = Math.ceil((rank_asc_arr.length - 1) / 2);
+  let double_median = rank_asc_arr[median_left_sub] + rank_asc_arr[median_right_sub];
+  return double_median / 2;
 }
 
 module.exports = compute_chain_median;
