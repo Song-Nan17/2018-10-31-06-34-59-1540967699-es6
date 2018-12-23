@@ -1,14 +1,14 @@
 'use strict';
 
 let grouping_count = collection => {
-  return collection.reduce((allElements, ele) => {
-    if (ele in allElements) {
-      allElements[ele]++;
+  return collection.reduce((all_elements, ele) => {
+    if (ele in all_elements) {
+      all_elements[ele]++;
     }
     else {
-      allElements[ele] = 1;
+      all_elements[ele] = 1;
     }
-    return allElements;
+    return all_elements;
   }, {});
 }
 
