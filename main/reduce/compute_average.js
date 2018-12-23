@@ -1,7 +1,7 @@
 'use strict';
 
 let compute_average = collection => {
-  let sum = collection.reduce((accumulator, currentValue) => accumulator + currentValue);
+  let sum = collection.reduce((accumulator, current) => accumulator + current);
   return sum / collection.length;
 }
 
