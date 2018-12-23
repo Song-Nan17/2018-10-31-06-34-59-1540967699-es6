@@ -1,14 +1,7 @@
 'use strict';
 
-function choose_divisible_integer(collection_a, collection_b) {
-  const isDivisible = function (eleInA) {
-    return collection_b.some(function divisible(eleInB) {
-      return eleInA % eleInB === 0;
-    });
-  }
-  return collection_a.filter(isDivisible);
+let choose_divisible_integer = (collection_a, collection_b) => {
+  return collection_a.filter(ele_a => collection_b.some(ele_b => ele_a % ele_b === 0));
 }
-
-
 
 module.exports = choose_divisible_integer;
