@@ -1,21 +1,21 @@
 'use strict';
 
-function get_integer_interval(number_a, number_b) {
-  let leftInterval = Math.min(number_a, number_b);
-  let rightInterval = Math.max(number_a, number_b);
-  let integerArray = getIntervalArr(leftInterval, rightInterval);
+let get_integer_interval = (number_a, number_b) => {
+  let left_interval = Math.min(number_a, number_b);
+  let right_interval = Math.max(number_a, number_b);
+  let integer_array = get_interval_arr(left_interval, right_interval);
   if (number_a > number_b) {
-    integerArray.reverse();
+    integer_array.reverse();
   }
-  return integerArray;
+  return integer_array;
 }
 
-function getIntervalArr(leftInterval, rightInterval) {
-  let integerArray = [];
-  for (leftInterval; leftInterval <= rightInterval; leftInterval++) {
-    integerArray.push(leftInterval);
+let get_interval_arr = (left_interval, right_interval) => {
+  let integer_array = [];
+  for (left_interval; left_interval <= right_interval; left_interval++) {
+    integer_array.push(left_interval);
   }
-  return integerArray;
+  return integer_array;
 }
 
 module.exports = get_integer_interval;
