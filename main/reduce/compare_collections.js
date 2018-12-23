@@ -1,6 +1,6 @@
 'use strict';
 
-function compare_collections(collection_a, collection_b) {
+let compare_collections = (collection_a, collection_b) => {
   return collection_a.toString() === collection_b.toString();
 }
 
