@@ -1,17 +1,11 @@
 'use strict';
 
-function compute_median(collection) {
-  let rankAscArr = rankAsc(collection);
-  let medianLeftSub = Math.floor((rankAscArr.length - 1) / 2);
-  let medianRightSub = Math.ceil((rankAscArr.length - 1) / 2);
-  let doubleMedian = rankAscArr[medianLeftSub] + rankAscArr[medianRightSub];
-  return doubleMedian / 2;
-}
-
-function rankAsc(collection) {
-  return collection.sort(function (a, b) {
-    return a - b;
-  });
+let compute_median = collection => {
+  let rank_asc_arr = collection.sort((a, b) => a - b);
+  let median_left_sub = Math.floor((rank_asc_arr.length - 1) / 2);
+  let median_right_sub = Math.ceil((rank_asc_arr.length - 1) / 2);
+  let double_median = rank_asc_arr[median_left_sub] + rank_asc_arr[median_right_sub];
+  return double_median / 2;
 }
 
 module.exports = compute_median;
