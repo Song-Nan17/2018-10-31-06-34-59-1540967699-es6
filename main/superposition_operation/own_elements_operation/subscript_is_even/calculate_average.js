@@ -1,20 +1,9 @@
 'use strict';
-var calculate_average = function (collection) {
-  let evenSubArr = collectNumEvenEle(collection);
-  return evenSubArr.reduce(sumArr) / evenSubArr.length;
-};
 
-function collectNumEvenEle(collection) {
-  return collection.filter(isNumEven);
-}
-function isNumEven(element, index) {
-  if ((index + 1) % 2 == 0) {
-    return element;
-  }
-}
-
-function sumArr(accumulator, currentValue) {
-  return accumulator + currentValue;
+let calculate_average = collection => {
+  let even_sub_arr = collection.filter((element, index) => (index + 1) % 2 === 0);
+  let sum = even_sub_arr.reduce((acc, current) => acc + current);
+  return sum / even_sub_arr.length;
 }
 
 module.exports = calculate_average;
