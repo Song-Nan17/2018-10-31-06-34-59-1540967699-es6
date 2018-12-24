@@ -1,44 +1,31 @@
-function create_updated_collection(collection_a, object_b) {
+let create_updated_collection = (collection_a, object_b) => {
   let collection = count_same_elements(collection_a);
-  let valueArr = object_b.value;
-  const findSameAndMinusOne = function (obj) {
-    if (valueArr.includes(obj.key)) {
-      obj.count -= minusOneEveryThree(obj.count);
+  return collection.map(obj => {
+    if (object_b.value.includes(obj.key)) {
+      obj.count -= Math.floor(obj.count / 3);
     }
     return obj;
-  }
-  return collection.map(findSameAndMinusOne);
+  });
 }
 
-function minusOneEveryThree(num) {
-  return Math.floor(num / 3);
+let count_same_elements = collection => {
+  let counts_arr = grouping_count(collection);
+  return counts_arr.map(ele => {
+    return { key: ele[0], count: ele[1] };
+  });
 }
 
-function count_same_elements(collection) {
-  let countsArr = grouping_count(collection);
-  return countsArr.map(formatObj);
-}
-
-function formatObj(arr) {
-  let formattedObj = {};
-  formattedObj.key = arr[0];
-  formattedObj.count = arr[1];
-  return formattedObj;
-}
-
-function grouping_count(collection) {
-  let obj = collection.reduce(countedElements, {});
+let grouping_count = collection => {
+  let obj = collection.reduce((acc, ele) => {
+    if (ele in acc) {
+      acc[ele]++;
+    }
+    else {
+      acc[ele] = 1;
+    }
+    return acc;
+  }, {});
   return Object.entries(obj);
-}
-
-function countedElements(allElements, ele) {
-  if (ele in allElements) {
-    allElements[ele]++;
-  }
-  else {
-    allElements[ele] = 1;
-  }
-  return allElements;
 }
 
 module.exports = create_updated_collection;
