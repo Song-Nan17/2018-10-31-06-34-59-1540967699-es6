@@ -1,22 +1,22 @@
 'use strict';
 
 function median_to_letter(collection) {
-  let code = Math.ceil(calculateMedian(collection));
-  return codeToLetter(code);
+  let code = Math.ceil(calculate_median(collection));
+  return code_to_letter(code);
 }
 
-function calculateMedian(collection) {
-  let medianLeftSub = Math.floor((collection.length - 1) / 2);
-  let medianRightSub = Math.ceil((collection.length - 1) / 2);
-  let doubleMedian = collection[medianLeftSub] + collection[medianRightSub];
-  return doubleMedian / 2;
+let calculate_median=collection=> {
+  let median_left_sub = Math.floor((collection.length - 1) / 2);
+  let median_right_sub = Math.ceil((collection.length - 1) / 2);
+  let double_median = collection[median_left_sub] + collection[median_right_sub];
+  return double_median / 2;
 }
 
-function codeToLetter(code) {
+let code_to_letter=code=> {
   if (code > 26) {
-    let firstCode = Math.floor((code - 1) / 26) - 1 + 97;
-    let secondCode = (code - 1) % 26 + 97;
-    return String.fromCharCode(firstCode, secondCode);
+    let first_code = Math.floor((code - 1) / 26) - 1 + 97;
+    let second_code = (code - 1) % 26 + 97;
+    return String.fromCharCode(first_code, second_code);
   } else {
     return String.fromCharCode(97 + code - 1);
   }
