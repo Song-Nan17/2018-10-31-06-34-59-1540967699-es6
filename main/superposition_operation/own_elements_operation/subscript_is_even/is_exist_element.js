@@ -1,17 +1,8 @@
 'use strict';
-var is_exist_element = function (collection, element) {
-  let evenSubArr = collect_all_even_subscript(collection);
-  return evenSubArr.includes(element);
-};
-
-function collect_all_even_subscript(collection) {
-  return collection.filter(subscriptIsEven);
+let is_exist_element = (collection, element) => {
+  let even_sub_arr = collection.filter((element, index) => index % 2 === 0);
+  return even_sub_arr.includes(element);
 }
 
-function subscriptIsEven(element, index) {
-  if (index % 2 == 0) {
-    return element;
-  }
-}
 
 module.exports = is_exist_element;
