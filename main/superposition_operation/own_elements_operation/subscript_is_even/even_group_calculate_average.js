@@ -1,71 +1,38 @@
 'use strict';
-var even_group_calculate_average = function (collection) {
-  let evenSubArr = collectNumEvenEle(collection);
-  let evenSubEvenArr = collect_all_even(evenSubArr);
-  if (evenSubEvenArr.length == 0) {
-    return [0];
-  } else {
-    let groupArr = evenSubEvenArr.reduce(groupArray, [[], [], []]);
-    let averageArray = groupArr.map(averageArrayAndRemoveEmpty, []);
-    return double_to_one(averageArray);
+
+let even_group_calculate_average = collection => {
+  let even_sub_arr = collection.filter((element, index) => (index + 1) % 2 === 0);
+  let even_arr = even_sub_arr.filter(ele => ele % 2 === 0);
+  if (even_arr.length) {
+    let group_arr = even_arr.reduce(group_array, [[], [], []]);
+    let average_array = group_arr.map(compute_group_average);
+    return average_array.reduce((acc, current) => acc.concat(current), []);
   }
-};
-
-function averageArrayAndRemoveEmpty(eleArr) {
-  if (eleArr.length !== 0) {
-    let average = compute_average(eleArr);
-    return average;
-  }
-  return eleArr;
+  return [0];
 }
 
-function compute_average(collection) {
-  return collection.reduce(sumArr) / collection.length;
-}
-
-function sumArr(accumulator, currentValue) {
-  return accumulator + currentValue;
-}
-
-function groupArray(groupArr, ele) {
-  let numLength = ele.toString().length;
-  switch (numLength) {
+let group_array = (acc, ele) => {
+  let ele_length = ele.toString().length;
+  switch (ele_length) {
     case 1:
-      groupArr[0].push(ele);
+      acc[0].push(ele);
       break;
     case 2:
-      groupArr[1].push(ele);
+      acc[1].push(ele);
       break;
     case 3:
-      groupArr[2].push(ele);
+      acc[2].push(ele);
       break;
   }
-  return groupArr;
+  return acc;
 }
 
-function collectNumEvenEle(collection) {
-  return collection.filter(isNumEven);
-}
-
-function isNumEven(element, index) {
-  if ((index + 1) % 2 == 0) {
-    return element;
+let compute_group_average = arr => {
+  if (arr.length !== 0) {
+    let sum = arr.reduce((acc, current) => acc + current)
+    return sum / arr.length;
   }
-}
-
-function collect_all_even(collection) {
-  return collection.filter(isEven);
-}
-function isEven(element) {
-  return element % 2 == 0;
-}
-
-function double_to_one(collection) {
-  return collection.reduce(toConcatArr, []);
-}
-
-function toConcatArr(accumulator, currentValue) {
-  return accumulator.concat(currentValue);
+  return arr;
 }
 
 module.exports = even_group_calculate_average;
