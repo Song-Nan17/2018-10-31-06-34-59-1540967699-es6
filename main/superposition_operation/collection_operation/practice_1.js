@@ -1,16 +1,8 @@
 'use strict';
 
-function hybrid_operation(collection) {
-  let newArr = collection.map(triplePlusTwo);
-  return newArr.reduce(sumArr);
-}
-
-function triplePlusTwo(num) {
-  return num * 3 + 2;
-}
-
-function sumArr(accumulator, currentValue) {
-  return accumulator + currentValue;
+let hybrid_operation = collection => {
+  let triple_add_two = collection.map(num => num * 3 + 2);
+  return triple_add_two.reduce((acc, current) => acc + current);
 }
 
 module.exports = hybrid_operation;
