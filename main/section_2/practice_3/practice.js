@@ -1,40 +1,30 @@
-function count_same_elements(collection) {
+let count_same_elements = collection => {
   let countsArr = grouping_count(collection);
-  return countsArr.map(formatObj);
+  return countsArr.map(ele => {
+    return { key: ele[0], count: ele[1] };
+  });
 }
 
-function formatObj(arr) {
-  let formattedObj = {};
-  formattedObj.name = arr[0];
-  formattedObj.summary = arr[1];
-  return formattedObj;
-}
-
-function grouping_count(collection) {
-  let obj = collection.reduce(countedElements, {});
+let grouping_count = collection => {
+  let obj = collection.reduce((acc, current) => {
+    let ele = current[0];
+    let ele_value = to_get_num_in_str(current);
+    if (ele in acc) {
+      acc[ele] += ele_value;
+    } else {
+      acc[ele] = ele_value;
+    }
+    return acc;
+  }, {});
   return Object.entries(obj);
 }
 
-function countedElements(allElements, eleString) {
-  let ele = eleString[0];
-  let eleValueNum = toGetNumInStr(eleString);
-  if (ele in allElements) {
-    allElements[ele] += eleValueNum;
-  } else {
-    allElements[ele] = eleValueNum;
+let to_get_num_in_str = str => {
+  let str_value = Number(str.replace(/[^0-9]/ig, ""));
+  if (str_value === 0) {
+    return 1;
   }
-  return allElements;
-}
-
-function toGetNumInStr(str) {
-  let strValue = str.replace(/[^0-9]/ig, "");
-  let strValueNum;
-  if (strValue == 0) {
-    strValueNum = 1;
-  } else {
-    strValueNum = Number(strValue);
-  }
-  return strValueNum;
+  return str_value;
 }
 
 module.exports = count_same_elements;
