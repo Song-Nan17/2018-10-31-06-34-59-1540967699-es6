@@ -1,20 +1,9 @@
 'use strict';
 
-function average_uneven(collection) {
-  let oddArr = collect_all_odd(collection);
-  return oddArr.reduce(sumArr) / oddArr.length;
-}
-
-function collect_all_odd(collection) {
-  return collection.filter(isOdd);
-}
-
-function isOdd(element) {
-  return element % 2 !== 0;
-}
-
-function sumArr(accumulator, currentValue) {
-  return accumulator + currentValue;
+let average_uneven = collection => {
+  let odd_arr = collection.filter(ele => ele % 2 !== 0);
+  let sum = odd_arr.reduce((acc, current) => acc + current);
+  return sum / odd_arr.length;
 }
 
 module.exports = average_uneven;
