@@ -1,7 +1,7 @@
 let count_same_elements = collection => {
   let countsArr = grouping_count(collection);
   return countsArr.map(ele => {
-    return { key: ele[0], count: ele[1] };
+    return { name: ele[0], summary: ele[1] };
   });
 }
 
