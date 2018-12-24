@@ -1,7 +1,7 @@
 'use strict';
 
-let one_add_next_multiply_three=collection=> {
-  let computed_arr = collection.map((current, index, array)=> {
+let one_add_next_multiply_three = collection => {
+  let computed_arr = collection.map((current, index, array) => {
     if (index < array.length - 1) {
       let next = array[index + 1];
       return (current + next) * 3;
